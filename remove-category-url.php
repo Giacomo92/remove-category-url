@@ -67,9 +67,9 @@ function remove_category_url_rewrite_rules( $category_rewrite ) {
 	if ( class_exists( 'Sitepress' ) ) {
 		global $sitepress;
 
-		remove_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ) );
-		$categories = get_categories( array( 'hide_empty' => false, '_icl_show_all_langs' => true ) );
-		add_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ) );
+		remove_filter('terms_clauses', array($sitepress, 'terms_clauses'),10 );
+		$categories = get_categories(array('hide_empty' => false, '_icl_show_all_langs' => true));
+		add_filter('terms_clauses', array($sitepress, 'terms_clauses'),10, 4 );
 	} else {
 		$categories = get_categories( array( 'hide_empty' => false ) );
 	}
